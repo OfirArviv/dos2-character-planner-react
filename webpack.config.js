@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "development") {
 
 module.exports = (env) => {
   const isProduction = env === 'production';
-  const CSSExtract = new ExtractTextPlugin("styles.css");
+  const CSSExtract = new ExtractTextPlugin("bulmaCustomize.css");
 
   console.log('env', env);
   return {

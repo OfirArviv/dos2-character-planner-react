@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
+import './styles/bulmaCustomize.sass';
 import configureStore from './store/configureStore';
-import './styles/styles.sass';
 import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();

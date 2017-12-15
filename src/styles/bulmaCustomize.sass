@@ -1,0 +1,277 @@
+// 1. Import the initial variables
+@import "../../node_modules/bulma/sass/utilities/initial-variables"
+
+// 2. Set your own initial variables
+// Update blue
+//$blue: #72d0eb
+//Add pink and its invert
+//$pink: #ffb3b3
+//$pink-invert: #fff
+// Add a serif family
+//$family-serif: "Merriweather", "Georgia", serif
+$tablet: 1105px
+
+/* 3. Set the derived variables
+// Use the new pink as the primary color
+//$primary: $pink
+//$primary-invert: $pink-invert
+// Use the existing orange as the danger color
+//$danger: $orange
+// Use the new serif family
+//$family-primary: $family-serif
+
+// 4. Import the rest of Bulma
+@import "../../node_modules/bulma/bulma"
+
+// 5. My custom declarations
+
+/* Font Styles */
+.subtitle
+  color: $black
+
+/* Body */
+body
+  background-color: $light
+
+html
+  background-color: $light
+  overflow-y: auto
+
+/* Hero Bar */
+.hero-body
+  padding: 2.5rem 1.5rem
+
+/* Section Wrapper */
+.section
+  padding: 2rem 1.5rem 3rem 1.5rem
+
+/* Box */
+.box
+  background-color: $light
+
+/* Portrait */
+#portrait
+  border-image-source: url(/public/images/portrait-border.png)
+  border-image-slice: 2 4 3 3 fill
+  border-image-width: 5px
+  border-image-outset: 0
+  border-image-repeat: stretch stretch
+  border-style: solid
+  margin-top: 4.4px
+  visibility: hidden
+
+/* Attribute buttons */
+#levelDown
+  visibility: hidden
+#strDown
+  visibility: hidden
+#intDown
+  visibility: hidden
+#finDown
+  visibility: hidden
+#conDown
+  visibility: hidden
+#memDown
+  visibility: hidden
+#witsDown
+  visibility: hidden
+
+/* Civil buttons */
+#bartDown
+  visibility: hidden
+#lcDown
+  visibility: hidden
+#perDown
+  visibility: hidden
+#lmDown
+  visibility: hidden
+#tkDown
+  visibility: hidden
+#snkDown
+  visibility: hidden
+#thvDown
+  visibility: hidden
+
+/* Combat buttons */
+#dwDown
+  visibility: hidden
+#rngDown
+  visibility: hidden
+#shDown
+  visibility: hidden
+#thDown
+  visibility: hidden
+#ldrDown
+  visibility: hidden
+#psvDown
+  visibility: hidden
+#retDown
+  visibility: hidden
+#aeroDown
+  visibility: hidden
+#geoDown
+  visibility: hidden
+#huntDown
+  visibility: hidden
+#hydroDown
+  visibility: hidden
+#necroDown
+  visibility: hidden
+#polyDown
+  visibility: hidden
+#pyroDown
+  visibility: hidden
+#scounDown
+  visibility: hidden
+#sumDown
+  visibility: hidden
+#warDown
+  visibility: hidden
+
+/* Skill Tags */
+#tagWrapper
+  margin-bottom: 0px !important
+  .tag
+    margin-right: 2px !important
+    margin-bottom: 2px !important
+.aero
+  background-color: #7473dc !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.geo
+  background-color: #82803b !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.hunt
+  background-color: #189142 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.hydro
+  background-color: #207dee !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.necro
+  background-color: #8c4a8e !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.poly
+  background-color: #ba8904 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.pyro
+  background-color: #c60000 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.scoun
+  background-color: #005b61 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.scoun
+  background-color: #005b61 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.sum
+  background-color: #7a4974 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+.war
+  background-color: #821d31 !important
+  color: $white !important
+  display: none !important
+  visibility: hidden !important
+
+
+/* Skill Tooltips Link */
+#skill-tooltips-level
+  margin-bottom: 0rem
+  padding-top: 1rem !important
+
+#skill-tooltips:hover
+  color: #3273dc
+  text-decoration: underline
+
+/* Talent Tooltips Link */
+#talent-tooltips-level
+  margin-bottom: 0rem
+
+#talent-tooltips
+  padding-top: 1rem
+
+#talent-tooltips:hover
+  color: #3273dc
+  text-decoration: underline
+
+/* Default Skills and Talents */
+.default.level:not(:last-child)
+  margin-bottom: 0.75rem
+
+[disabled]
+  background-color: $white !important
+
+/* Accordion Menu */
+.tab
+  position: relative
+  margin-bottom: 1px
+  width: 100%
+  color: #fff
+  overflow: hidden
+
+input.accordion
+  position: absolute
+  opacity: 0
+  z-index: -1
+
+label.accordion
+  position: relative
+  display: block
+  padding: 0 0 0 1em
+  background: hsl(171, 100%, 33%)
+  font-weight: bold
+  line-height: 3
+  cursor: pointer
+
+.tab-content
+  max-height: 0
+  overflow: hidden
+  background: #ccc
+  -webkit-transition: max-height .35s
+  -o-transition: max-height .35s
+  transition: max-height .35s
+
+.tab-content .level
+  margin: 0.5em
+
+input:checked ~ .tab-content
+  max-height: 30em
+
+label::after
+  position: absolute
+  right: 0
+  top: 0
+  display: block
+  width: 3em
+  height: 3em
+  line-height: 3
+  text-align: center
+  -webkit-transition: all .35s
+  -o-transition: all .35s
+  transition: all .35s
+
+input[type=checkbox] + label::after
+  content: "V"
+
+input[type=checkbox]:checked + label::after
+  transform: rotate(-180deg)
+
+input[type=radio]:checked + label::after
+  transform: rotateX(180deg)

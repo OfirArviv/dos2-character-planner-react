@@ -1,8 +1,9 @@
 import React from 'react';
 
 const AppComponent = () => (
-  <div className="loader">
-    This is the App component!
+  <div>
+    <p>This is the App component!</p>
+    <button className="button">Button!</button>
   </div>
 );
 
