@@ -1,13 +1,10 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { createStore, combineReducers } from 'redux';
+import buildReducer from '../reducers/buildReducer';
 
 export default () => {
   const store = createStore(
-    combineReducers({
-    }),
-    composeEnhancers(applyMiddleware(thunk))
+    buildReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
   return store;

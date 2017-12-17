@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const AttributesColumn = () => (
+const AttributesColumn = (props) => (
   <div className="column">
     <div className="box">
 
@@ -212,8 +213,16 @@ const AttributesColumn = () => (
         </div>
       </div>
 
+      <p>{props.gender}</p>
+
     </div>
   </div>
 );
 
-export default AttributesColumn;
+const mapStateToProps = (state) => {
+  return {
+    gender: state.gender
+  };
+};
+
+export default connect(mapStateToProps)(AttributesColumn);
