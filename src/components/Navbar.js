@@ -26,7 +26,7 @@ const Navbar = () => (
         <div className="navbar-end">
           <div className="navbar-item">
             <p className="control">
-              <button className="button is-primary" id="saveButton">Save Build</button>
+              <button className="button is-primary has-text-weight-semibold" id="saveButton">Save Build</button>
             </p>
           </div>
         </div>
