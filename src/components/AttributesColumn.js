@@ -213,7 +213,7 @@ const AttributesColumn = (props) => (
         </div>
       </div>
 
-      <p>{props.gender}</p>
+      <div>{props.gender === "male" ? <p>True!</p> : <p>False!</p> }</div>
 
     </div>
   </div>

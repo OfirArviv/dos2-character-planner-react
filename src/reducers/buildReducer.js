@@ -1,8 +1,8 @@
-// Expenses Reducer
+// Build Reducer
 
 const buildReducerDefaultState = {
   /* Basics */
-  race: "human",
+  race: "elf",
   gender: "male",
   origin: "custom",
 
@@ -58,27 +58,36 @@ const buildReducerDefaultState = {
 };
 
 export default (state = buildReducerDefaultState, action) => {
+  
   switch (action.type) {
-    case 'ADD_EXPENSE':
-      return [
+
+    case 'CHANGE_RACE':
+      return {
         ...state,
-        action.expense
-      ];
-    case 'REMOVE_EXPENSE':
-      return state.filter(({ id }) => id !== action.id);
-    case 'EDIT_EXPENSE':
-      return state.map((expense) => {
-        if (expense.id === action.id) {
-          return {
-            ...expense,
-            ...action.updates
-          };
-        } else {
-          return expense;
+        race: action.race
+      };
+
+    case 'CHANGE_GENDER':
+      return {
+        ...state,
+        gender: action.gender
+      };
+
+    case 'CHANGE_ORIGIN':
+      if (action.race && action.gender) {
+        return {
+          ...state,
+          race: action.race,
+          gender: action.gender,
+          origin: action.origin
         };
-      });
-    case 'SET_EXPENSES':
-      return action.expenses;
+      } else {
+        return {
+          ...state,
+          origin: action.origin
+        };
+      }    
+
     default:
       return state;
   }
