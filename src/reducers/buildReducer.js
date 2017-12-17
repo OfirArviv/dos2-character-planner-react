@@ -2,7 +2,7 @@
 
 const buildReducerDefaultState = {
   /* Basics */
-  race: "elf",
+  race: "dwarf",
   gender: "male",
   origin: "custom",
 

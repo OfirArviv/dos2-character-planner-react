@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeRace, changeGender, changeOrigin } from '../actions/basicsActions'
+import { changeRace, changeGender, changeOrigin } from '../actions/basicsActions';
 
 class BasicsColumn extends React.Component {
 
