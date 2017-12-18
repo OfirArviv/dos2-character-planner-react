@@ -1,8 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-/* import { levelUp, levelDown } from '../actions/basicsActions'; */
+import { intelligenceUp, intelligenceDown } from '../../actions/statisticsActions';
 
 class IntelligenceComponent extends React.Component {
+
+  isIntelligenceDownPossible = () => {
+    if (this.props.intelligence > 10) { return true }
+    else if (this.props.intelligence === 10) { return false }
+  }
+  
+  isIntelligenceUpPossible = () => {
+    if (this.props.attrLeft === 0) { return false }
+    else if (this.props.intelligence === 40) { return false }
+    else { return true }
+  }
+
+  intelligenceUp = () => {
+    this.props.intelligenceUp();
+  };
+
+  intelligenceDown = () => {
+    this.props.intelligenceDown();
+  };
 
   render () {
     return (
@@ -13,9 +32,9 @@ class IntelligenceComponent extends React.Component {
           </div>
         </div>
         <div className="level-right">
-          { this.props.isAttributeDownPossible("intelligence") ? 
+          { this.isIntelligenceDownPossible() ? 
             <div className="level-item">
-              <button className="button is-primary is-small" id="intDown">
+              <button className="button is-primary is-small" id="intDown" onClick={ this.intelligenceDown }>
                     <span className="icon is-small">
                       <i className="fa fa-minus"></i>
                     </span>
@@ -25,15 +44,22 @@ class IntelligenceComponent extends React.Component {
           <div className="level-item">
             <p className="subtitle is-5" id="intelligence">{ this.props.intelligence }</p>
           </div>
-          { this.props.isAttributeUpPossible("intelligence") ? 
+          { this.isIntelligenceUpPossible() ? 
             <div className="level-item">
-              <button className="button is-primary is-small" id="intUp">
+              <button className="button is-primary is-small" id="intUp" onClick={ this.intelligenceUp }>
                     <span className="icon is-small">
                       <i className="fa fa-plus"></i>
                     </span>
               </button>
             </div>
-          : null }
+          :
+            <div className="level-item">
+              <button className="button is-primary is-small" id="intUpInvisible">
+                <span className="icon is-small">
+                  <i className="fa fa-plus"></i>
+                </span>
+              </button>
+            </div> }
         </div>
       </div>
     );
@@ -42,17 +68,16 @@ class IntelligenceComponent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    attrLeft: state.attrLeft,
-    attrTotal: state.attrTotal,
-    level: state.level,
-    intelligence: state.intelligence
+    attrLeft: state.statistics.attrLeft,
+    attrTotal: state.statistics.attrTotal,
+    level: state.statistics.level,
+    intelligence: state.statistics.intelligence
   };
 };
 
-/* const mapDispatchToProps = (dispatch) => ({
-  changeRace: (race) => dispatch(changeRace(race)),
-  changeGender: (gender) => dispatch(changeGender(gender)),
-  changeOrigin: (origin) => dispatch(changeOrigin(origin))
-}); */
+const mapDispatchToProps = (dispatch) => ({
+  intelligenceUp: () => dispatch(intelligenceUp()),
+  intelligenceDown: () => dispatch(intelligenceDown())
+});
 
-export default connect(mapStateToProps)(IntelligenceComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(IntelligenceComponent);

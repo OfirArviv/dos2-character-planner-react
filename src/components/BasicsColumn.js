@@ -90,9 +90,9 @@ class BasicsColumn extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    race: state.race,
-    gender: state.gender,
-    origin: state.origin
+    race: state.basics.race,
+    gender: state.basics.gender,
+    origin: state.basics.origin
   };
 };
 

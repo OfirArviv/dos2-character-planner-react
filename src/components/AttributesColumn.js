@@ -10,17 +10,6 @@ import WitsComponent from './individualAttributes/WitsComponent';
 
 class AttributesColumn extends React.Component {
 
-  isAttributeDownPossible = (attribute) => {
-    if (this.props.attribute > 10) { return true }
-    else if (this.props.attribute === 10) { return false }
-  }
-
-  isAttributeUpPossible = (attribute) => {
-    if (this.props.attrLeft === 0) { return false }
-    else if (this.props.attribute === 40) { return false }
-    else { return true }
-  }
-
   render () {
     return (
       <div className="column">
@@ -46,18 +35,12 @@ class AttributesColumn extends React.Component {
           </div>
 
           <LevelComponent />
-
-          <StrengthComponent isAttributeDownPossible={this.isAttributeDownPossible} isAttributeUpPossible={this.isAttributeUpPossible} />
-
-          <IntelligenceComponent isAttributeDownPossible={this.isAttributeDownPossible} isAttributeUpPossible={this.isAttributeUpPossible} />
-
-          <FinesseComponent isAttributeDownPossible={this.isAttributeDownPossible} isAttributeUpPossible={this.isAttributeUpPossible} />
-
-          <ConstitutionComponent isAttributeDownPossible={this.isAttributeDownPossible} isAttributeUpPossible={this.isAttributeUpPossible} />
-
-          <MemoryComponent isAttributeDownPossible={this.isAttributeDownPossible} isAttributeUpPossible={this.isAttributeUpPossible} />
-
-          <WitsComponent isAttributeDownPossible={this.isAttributeDownPossible} isAttributeUpPossible={this.isAttributeUpPossible} />  
+          <StrengthComponent />
+          <IntelligenceComponent />
+          <FinesseComponent />
+          <ConstitutionComponent />
+          <MemoryComponent />
+          <WitsComponent />
 
         </div>
       </div>
@@ -67,15 +50,9 @@ class AttributesColumn extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    attrLeft: state.attrLeft,
-    attrTotal: state.attrTotal
+    attrLeft: state.statistics.attrLeft,
+    attrTotal: state.statistics.attrTotal
   };
 };
-
-/* const mapDispatchToProps = (dispatch) => ({
-  changeRace: (race) => dispatch(changeRace(race)),
-  changeGender: (gender) => dispatch(changeGender(gender)),
-  changeOrigin: (origin) => dispatch(changeOrigin(origin))
-}); */
 
 export default connect(mapStateToProps)(AttributesColumn);

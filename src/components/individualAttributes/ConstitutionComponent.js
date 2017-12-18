@@ -1,8 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-/* import { levelUp, levelDown } from '../actions/basicsActions'; */
+import { constitutionUp, constitutionDown } from '../../actions/statisticsActions';
 
 class ConstitutionComponent extends React.Component {
+
+  isConstitutionDownPossible = () => {
+    if (this.props.constitution > 10) { return true }
+    else if (this.props.constitution === 10) { return false }
+  }
+  
+  isConstitutionUpPossible = () => {
+    if (this.props.attrLeft === 0) { return false }
+    else if (this.props.constitution === 40) { return false }
+    else { return true }
+  }
+
+  constitutionUp = () => {
+    this.props.constitutionUp();
+  };
+
+  constitutionDown = () => {
+    this.props.constitutionDown();
+  };
 
   render () {
     return (
@@ -13,9 +32,9 @@ class ConstitutionComponent extends React.Component {
           </div>
         </div>
         <div className="level-right">
-          { this.props.isAttributeDownPossible("constitution") ? 
+          { this.isConstitutionDownPossible() ? 
             <div className="level-item">
-              <button className="button is-primary is-small" id="conDown">
+              <button className="button is-primary is-small" id="conDown" onClick={ this.constitutionDown }>
                     <span className="icon is-small">
                       <i className="fa fa-minus"></i>
                     </span>
@@ -25,15 +44,22 @@ class ConstitutionComponent extends React.Component {
           <div className="level-item">
             <p className="subtitle is-5" id="constitution">{ this.props.constitution }</p>
           </div>
-          { this.props.isAttributeUpPossible("constitution") ? 
+          { this.isConstitutionUpPossible() ? 
             <div className="level-item">
-              <button className="button is-primary is-small" id="conUp">
+              <button className="button is-primary is-small" id="conUp" onClick={ this.constitutionUp }>
                     <span className="icon is-small">
                       <i className="fa fa-plus"></i>
                     </span>
               </button>
             </div>
-          : null }
+          :
+            <div className="level-item">
+              <button className="button is-primary is-small" id="conUpInvisible">
+                <span className="icon is-small">
+                  <i className="fa fa-plus"></i>
+                </span>
+              </button>
+            </div> }
         </div>
       </div>
     );
@@ -42,17 +68,16 @@ class ConstitutionComponent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    attrLeft: state.attrLeft,
-    attrTotal: state.attrTotal,
-    level: state.level,
-    constitution: state.constitution
+    attrLeft: state.statistics.attrLeft,
+    attrTotal: state.statistics.attrTotal,
+    level: state.statistics.level,
+    constitution: state.statistics.constitution
   };
 };
 
-/* const mapDispatchToProps = (dispatch) => ({
-  changeRace: (race) => dispatch(changeRace(race)),
-  changeGender: (gender) => dispatch(changeGender(gender)),
-  changeOrigin: (origin) => dispatch(changeOrigin(origin))
-}); */
+const mapDispatchToProps = (dispatch) => ({
+  constitutionUp: () => dispatch(constitutionUp()),
+  constitutionDown: () => dispatch(constitutionDown())
+});
 
-export default connect(mapStateToProps)(ConstitutionComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ConstitutionComponent);

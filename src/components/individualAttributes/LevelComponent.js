@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-/* import { levelUp, levelDown } from '../actions/basicsActions'; */
+import { levelUp, levelDown } from '../../actions/statisticsActions';
 
 class LevelComponent extends React.Component {
 
@@ -11,14 +11,20 @@ class LevelComponent extends React.Component {
 
   isLevelDownPossible = () => {
     if (this.props.level === 1) { return false }
-    else if (this.props.attrLeft <= 2) { return false }
+    else if (this.props.attrLeft < 2) { return false }
     else if (this.props.level === 2 || this.props.level === 6 || this.props.level === 10 || this.props.level === 14 ||
-        this.props.level === 18 || this.props.level === 22 || this.props.level === 26) {
-          if (this.props.civLeft === 0) {
-            return false
-          }
+            this.props.level === 18 || this.props.level === 22 || this.props.level === 26) {
+              return (this.props.civLeft === 0 ? false : true );
     }
     else { return true }
+  };
+
+  levelUp = () => {
+    this.props.levelUp();
+  };
+
+  levelDown = () => {
+    this.props.levelDown();
   };
 
   render () {
@@ -32,7 +38,7 @@ class LevelComponent extends React.Component {
         <div className="level-right">
           { this.isLevelDownPossible() ?
             <div className="level-item" id="decLevelDiv">
-              <button className="button is-primary is-small" id="levelDown">
+              <button className="button is-primary is-small" id="levelDown" onClick={ this.levelDown }>
                     <span className="icon is-small">
                       <i className="fa fa-minus"></i>
                     </span>
@@ -44,13 +50,20 @@ class LevelComponent extends React.Component {
           </div>
           { this.isLevelUpPossible() ?
             <div className="level-item">
-              <button className="button is-primary is-small" id="levelUp">
+              <button className="button is-primary is-small" id="levelUp" onClick={ this.levelUp }>
                     <span className="icon is-small">
                       <i className="fa fa-plus"></i>
                     </span>
               </button>
             </div>
-          : null }
+          : <div className="level-item">
+              <button className="button is-primary is-small" id="levelUpInvisible">
+                    <span className="icon is-small">
+                      <i className="fa fa-plus"></i>
+                    </span>
+              </button>
+            </div>
+          }
         </div>
       </div>
     );
@@ -59,17 +72,16 @@ class LevelComponent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    attrLeft: state.attrLeft,
-    attrTotal: state.attrTotal,
-    level: state.level,
-    civLeft: state.civLeft
+    attrLeft: state.statistics.attrLeft,
+    attrTotal: state.statistics.attrTotal,
+    level: state.statistics.level,
+    civLeft: state.statistics.civLeft
   };
 };
 
-/* const mapDispatchToProps = (dispatch) => ({
-  changeRace: (race) => dispatch(changeRace(race)),
-  changeGender: (gender) => dispatch(changeGender(gender)),
-  changeOrigin: (origin) => dispatch(changeOrigin(origin))
-}); */
+const mapDispatchToProps = (dispatch) => ({
+  levelUp: () => dispatch(levelUp()),
+  levelDown: () => dispatch(levelDown())
+});
 
-export default connect(mapStateToProps)(LevelComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(LevelComponent);

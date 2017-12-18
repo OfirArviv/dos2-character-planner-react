@@ -1,8 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-/* import { levelUp, levelDown } from '../actions/basicsActions'; */
+import { finesseUp, finesseDown } from '../../actions/statisticsActions';
 
 class FinesseComponent extends React.Component {
+
+  isFinesseDownPossible = () => {
+    if (this.props.finesse > 10) { return true }
+    else if (this.props.finesse === 10) { return false }
+  }
+  
+  isFinesseUpPossible = () => {
+    if (this.props.attrLeft === 0) { return false }
+    else if (this.props.finesse === 40) { return false }
+    else { return true }
+  }
+
+  finesseUp = () => {
+    this.props.finesseUp();
+  };
+
+  finesseDown = () => {
+    this.props.finesseDown();
+  };
 
   render () {
     return (
@@ -13,9 +32,9 @@ class FinesseComponent extends React.Component {
           </div>
         </div>
         <div className="level-right">
-          { this.props.isAttributeDownPossible("finesse") ? 
+          { this.isFinesseDownPossible() ? 
             <div className="level-item">
-              <button className="button is-primary is-small" id="finDown">
+              <button className="button is-primary is-small" id="finDown" onClick={ this.finesseDown }>
                     <span className="icon is-small">
                       <i className="fa fa-minus"></i>
                     </span>
@@ -25,15 +44,22 @@ class FinesseComponent extends React.Component {
           <div className="level-item">
             <p className="subtitle is-5" id="finesse">{ this.props.finesse }</p>
           </div>
-          { this.props.isAttributeUpPossible("finesse") ? 
+          { this.isFinesseUpPossible() ? 
             <div className="level-item">
-              <button className="button is-primary is-small" id="finUp">
+              <button className="button is-primary is-small" id="finUp" onClick={ this.finesseUp }>
                     <span className="icon is-small">
                       <i className="fa fa-plus"></i>
                     </span>
               </button>
             </div>
-          : null }
+          :
+            <div className="level-item">
+              <button className="button is-primary is-small" id="finUpInvisible">
+                <span className="icon is-small">
+                  <i className="fa fa-plus"></i>
+                </span>
+              </button>
+            </div> }
         </div>
       </div>
     );
@@ -42,17 +68,16 @@ class FinesseComponent extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    attrLeft: state.attrLeft,
-    attrTotal: state.attrTotal,
-    level: state.level,
-    finesse: state.finesse
+    attrLeft: state.statistics.attrLeft,
+    attrTotal: state.statistics.attrTotal,
+    level: state.statistics.level,
+    finesse: state.statistics.finesse
   };
 };
 
-/* const mapDispatchToProps = (dispatch) => ({
-  changeRace: (race) => dispatch(changeRace(race)),
-  changeGender: (gender) => dispatch(changeGender(gender)),
-  changeOrigin: (origin) => dispatch(changeOrigin(origin))
-}); */
+const mapDispatchToProps = (dispatch) => ({
+  finesseUp: () => dispatch(finesseUp()),
+  finesseDown: () => dispatch(finesseDown())
+});
 
-export default connect(mapStateToProps)(FinesseComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(FinesseComponent);

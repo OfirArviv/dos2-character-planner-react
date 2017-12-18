@@ -1,219 +1,58 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import BarteringComponent from './individualCivil/BarteringComponent';
+import LuckyCharmComponent from './individualCivil/LuckyCharmComponent';
+import PersuasionComponent from './individualCivil/PersuasionComponent';
+import LoremasterComponent from './individualCivil/LoremasterComponent';
+import TelekinesisComponent from './individualCivil/TelekinesisComponent';
+import SneakingComponent from './individualCivil/SneakingComponent';
+import ThieveryComponent from './individualCivil/ThieveryComponent';
 
-const CivilColumn = () => (
-  <div className="column">
-    <div className="box">
+class CivilColumn extends React.Component {
 
-      <h1 className="title is-4">CIVIL ABILITIES</h1>
+  render () {
+    return (
+      <div className="column">
+        <div className="box">
 
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-5">Points Left: </p>
+          <h1 className="title is-4">CIVIL ABILITIES</h1>
+
+          <div className="level is-mobile">
+            <div className="level-left">
+              <div className="level-item">
+                <p className="subtitle is-5">Points Left: </p>
+              </div>
+            </div>
+            <div className="level-right">
+              <div className="level-item">
+                <p className="tag is-primary is-medium">
+                  <span id="civLeft">{ this.props.civLeft }</span>
+                  <span>&nbsp;/&nbsp;</span>
+                  <span id="civTotal">{ this.props.civTotal }</span>
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <p className="tag is-primary is-medium">
-              <span id="civLeft">1</span>
-              <span>&nbsp;/&nbsp;</span>
-              <span id="civTotal">1</span>
-            </p>
-          </div>
+
+          <BarteringComponent />
+          <LuckyCharmComponent />
+          <PersuasionComponent />
+          <LoremasterComponent />
+          <TelekinesisComponent />
+          <SneakingComponent />
+          <ThieveryComponent />
+
         </div>
       </div>
+    );
+  }
+};
 
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Bartering: </p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="bartDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="bartering">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="bartUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
+const mapStateToProps = (state) => {
+  return {
+    civLeft: state.statistics.civLeft,
+    civTotal: state.statistics.civTotal
+  };
+};
 
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Lucky Charm:</p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="lcDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="luckyCharm">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="lcUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Persuasion: </p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="perDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="persuasion">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="perUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Loremaster: </p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="lmDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="loremaster">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="lmUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Telekinesis: </p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="tkDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="telekinesis">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="tkUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Sneaking: </p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="snkDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="sneaking">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="snkUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="level is-mobile">
-        <div className="level-left">
-          <div className="level-item">
-            <p className="subtitle is-6">Thievery: </p>
-          </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <button className="button is-primary is-small" id="thvDown">
-                  <span className="icon is-small">
-                    <i className="fa fa-minus"></i>
-                  </span>
-            </button>
-          </div>
-          <div className="level-item">
-            <p className="subtitle is-5" id="thievery">0</p>
-          </div>
-          <div className="level-item">
-            <button className="button is-primary is-small" id="thvUp">
-                  <span className="icon is-small">
-                    <i className="fa fa-plus"></i>
-                  </span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-);
-
-export default CivilColumn;
+export default connect(mapStateToProps)(CivilColumn);

@@ -4,11 +4,13 @@ export const changeRace = (race) => ({
   race
 });
 
+// CHANGE_GENDER
 export const changeGender = (gender) => ({
   type: 'CHANGE_GENDER',
   gender
 });
 
+// CHANGE_ORIGIN
 export const changeOrigin = (origin) => {
 
   switch (origin) {

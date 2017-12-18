@@ -1,9 +1,13 @@
 import { createStore, combineReducers } from 'redux';
-import buildReducer from '../reducers/buildReducer';
+import basicsReducer from '../reducers/basicsReducer';
+import statisticsReducer from '../reducers/statisticsReducer';
 
 export default () => {
   const store = createStore(
-    buildReducer,
+    combineReducers({
+      basics: basicsReducer,
+      statistics: statisticsReducer
+    }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
