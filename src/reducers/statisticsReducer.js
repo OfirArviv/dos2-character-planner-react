@@ -56,6 +56,7 @@ const statisticsReducerDefaultState = {
 export default (state = statisticsReducerDefaultState, action) => {
   switch (action.type) {
 
+    /* Attributes Column */
     case 'LEVEL_UP':
       if (state.level === 1 || state.level === 5 || state.level === 9 || state.level === 13 || state.level === 17 || state.level === 21 || state.level === 25) {
         return {
@@ -64,7 +65,9 @@ export default (state = statisticsReducerDefaultState, action) => {
           attrLeft: state.attrLeft + 2,
           attrTotal: state.attrTotal + 2,
           civLeft: state.civLeft + 1,
-          civTotal: state.civTotal + 1
+          civTotal: state.civTotal + 1,
+          comLeft: state.comLeft + 1,
+          comTotal: state.comTotal + 1
         } 
       }
       else {
@@ -72,7 +75,9 @@ export default (state = statisticsReducerDefaultState, action) => {
           ...state,
           level: state.level + 1,
           attrLeft: state.attrLeft + 2,
-          attrTotal: state.attrTotal + 2
+          attrTotal: state.attrTotal + 2,
+          comLeft: state.comLeft + 1,
+          comTotal: state.comTotal + 1
         } 
       }
     case 'LEVEL_DOWN':
@@ -83,7 +88,9 @@ export default (state = statisticsReducerDefaultState, action) => {
           attrLeft: state.attrLeft - 2,
           attrTotal: state.attrTotal - 2,
           civLeft: state.civLeft - 1,
-          civTotal: state.civTotal - 1
+          civTotal: state.civTotal - 1,
+          comLeft: state.comLeft - 1,
+          comTotal: state.comTotal - 1
         } 
       }
       else {
@@ -91,7 +98,9 @@ export default (state = statisticsReducerDefaultState, action) => {
           ...state,
           level: state.level - 1,
           attrLeft: state.attrLeft - 2,
-          attrTotal: state.attrTotal - 2
+          attrTotal: state.attrTotal - 2,
+          comLeft: state.comLeft - 1,
+          comTotal: state.comTotal - 1
         } 
       }
     case 'STRENGTH_UP':
@@ -166,6 +175,8 @@ export default (state = statisticsReducerDefaultState, action) => {
         wits: state.wits - 1,
         attrLeft: state.attrLeft + 1
       }
+
+    /* Civil Abilities Column */
     case 'BARTERING_UP':
       return {
         ...state,
@@ -250,6 +261,212 @@ export default (state = statisticsReducerDefaultState, action) => {
         thievery: state.thievery - 1,
         civLeft: state.civLeft + 1
       }
+
+    /* Combat Abilities Column */
+    case 'DUALWIELDING_UP':
+      return {
+        ...state,
+        dualWielding: state.dualWielding + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'DUALWIELDING_DOWN':
+      return {
+        ...state,
+        dualWielding: state.dualWielding - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'RANGED_UP':
+      return {
+        ...state,
+        ranged: state.ranged + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'RANGED_DOWN':
+      return {
+        ...state,
+        ranged: state.ranged - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'SINGLEHANDED_UP':
+      return {
+        ...state,
+        singleHanded: state.singleHanded + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'SINGLEHANDED_DOWN':
+      return {
+        ...state,
+        singleHanded: state.singleHanded - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'TWOHANDED_UP':
+      return {
+        ...state,
+        twoHanded: state.twoHanded + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'TWOHANDED_DOWN':
+      return {
+        ...state,
+        twoHanded: state.twoHanded - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'LEADERSHIP_UP':
+      return {
+        ...state,
+        leadership: state.leadership + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'LEADERSHIP_DOWN':
+      return {
+        ...state,
+        leadership: state.leadership - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'PERSEVERANCE_UP':
+      return {
+        ...state,
+        perseverance: state.perseverance + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'PERSEVERANCE_DOWN':
+      return {
+        ...state,
+        perseverance: state.perseverance - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'RETRIBUTION_UP':
+      return {
+        ...state,
+        retribution: state.retribution + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'RETRIBUTION_DOWN':
+      return {
+        ...state,
+        retribution: state.retribution - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'AEROTHEURGE_UP':
+      return {
+        ...state,
+        aerotheurge: state.aerotheurge + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'AEROTHEURGE_DOWN':
+      return {
+        ...state,
+        aerotheurge: state.aerotheurge - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'GEOMANCER_UP':
+      return {
+        ...state,
+        geomancer: state.geomancer + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'GEOMANCER_DOWN':
+      return {
+        ...state,
+        geomancer: state.geomancer - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'HUNTSMAN_UP':
+      return {
+        ...state,
+        huntsman: state.huntsman + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'HUNTSMAN_DOWN':
+      return {
+        ...state,
+        huntsman: state.huntsman - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'HYDROSOPHIST_UP':
+      return {
+        ...state,
+        hydrosophist: state.hydrosophist + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'HYDROSOPHIST_DOWN':
+      return {
+        ...state,
+        hydrosophist: state.hydrosophist - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'NECROMANCER_UP':
+      return {
+        ...state,
+        necromancer: state.necromancer + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'NECROMANCER_DOWN':
+      return {
+        ...state,
+        necromancer: state.necromancer - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'POLYMORPH_UP':
+      return {
+        ...state,
+        polymorph: state.polymorph + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'POLYMORPH_DOWN':
+      return {
+        ...state,
+        polymorph: state.polymorph - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'PYROKINETIC_UP':
+      return {
+        ...state,
+        pyrokinetic: state.pyrokinetic + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'PYROKINETIC_DOWN':
+      return {
+        ...state,
+        pyrokinetic: state.pyrokinetic - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'SCOUNDREL_UP':
+      return {
+        ...state,
+        scoundrel: state.scoundrel + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'SCOUNDREL_DOWN':
+      return {
+        ...state,
+        scoundrel: state.scoundrel - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'SUMMONING_UP':
+      return {
+        ...state,
+        summoning: state.summoning + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'SUMMONING_DOWN':
+      return {
+        ...state,
+        summoning: state.summoning - 1,
+        comLeft: state.comLeft + 1
+      }  
+    case 'WARFARE_UP':
+      return {
+        ...state,
+        warfare: state.warfare + 1,
+        comLeft: state.comLeft - 1
+      }    
+    case 'WARFARE_DOWN':
+      return {
+        ...state,
+        warfare: state.warfare - 1,
+        comLeft: state.comLeft + 1
+      }  
 
     default:
       return state;

@@ -12,6 +12,7 @@ class LevelComponent extends React.Component {
   isLevelDownPossible = () => {
     if (this.props.level === 1) { return false }
     else if (this.props.attrLeft < 2) { return false }
+    else if (this.props.comLeft === 0) { return false }
     else if (this.props.level === 2 || this.props.level === 6 || this.props.level === 10 || this.props.level === 14 ||
             this.props.level === 18 || this.props.level === 22 || this.props.level === 26) {
               return (this.props.civLeft === 0 ? false : true );
@@ -75,7 +76,8 @@ const mapStateToProps = (state) => {
     attrLeft: state.statistics.attrLeft,
     attrTotal: state.statistics.attrTotal,
     level: state.statistics.level,
-    civLeft: state.statistics.civLeft
+    civLeft: state.statistics.civLeft,
+    comLeft: state.statistics.comLeft
   };
 };
 
