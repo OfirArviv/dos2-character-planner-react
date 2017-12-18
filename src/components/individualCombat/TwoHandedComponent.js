@@ -28,7 +28,7 @@ class TwoHandedComponent extends React.Component {
       <div className="level is-mobile">
         <div className="level-left">
           <div className="level-item">
-            <p className="subtitle is-6">TwoHanded: </p>
+            <p className="subtitle is-6">Two Handed: </p>
           </div>
         </div>
         <div className="level-right">

@@ -28,7 +28,7 @@ class DualWieldingComponent extends React.Component {
       <div className="level is-mobile">
         <div className="level-left">
           <div className="level-item">
-            <p className="subtitle is-6">DualWielding: </p>
+            <p className="subtitle is-6">Dual Wielding: </p>
           </div>
         </div>
         <div className="level-right">

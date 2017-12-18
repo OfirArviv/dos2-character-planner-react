@@ -155,13 +155,15 @@ export default (state = statisticsReducerDefaultState, action) => {
       return {
         ...state,
         memory: state.memory + 1,
-        attrLeft: state.attrLeft - 1
+        attrLeft: state.attrLeft - 1,
+        memTotal: state.memTotal + 1
       }    
     case 'MEMORY_DOWN':
       return {
         ...state,
         memory: state.memory - 1,
-        attrLeft: state.attrLeft + 1
+        attrLeft: state.attrLeft + 1,
+        memTotal: state.memTotal - 1
       }  
     case 'WITS_UP':
       return {

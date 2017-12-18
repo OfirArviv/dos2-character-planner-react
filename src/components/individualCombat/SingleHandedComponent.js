@@ -28,7 +28,7 @@ class SingleHandedComponent extends React.Component {
       <div className="level is-mobile">
         <div className="level-left">
           <div className="level-item">
-            <p className="subtitle is-6">SingleHanded: </p>
+            <p className="subtitle is-6">Single Handed: </p>
           </div>
         </div>
         <div className="level-right">
