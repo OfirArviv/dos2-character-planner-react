@@ -50,7 +50,12 @@ const statisticsReducerDefaultState = {
 
   /* Talents */
   talentsLeft: 1,
-  talentsTotal: 1
+  talentSlots: 1,
+  talent1: "",
+  talent2: "",
+  talent3: "",
+  talent4: "",
+  talent5: ""
 };
 
 export default (state = statisticsReducerDefaultState, action) => {
@@ -58,7 +63,7 @@ export default (state = statisticsReducerDefaultState, action) => {
 
     /* Attributes Column */
     case 'LEVEL_UP':
-      if (state.level === 1 || state.level === 5 || state.level === 9 || state.level === 13 || state.level === 17 || state.level === 21 || state.level === 25) {
+      if (state.level === 1 || state.level === 5 || state.level === 13 || state.level === 17 || state.level === 25) {
         return {
           ...state,
           level: state.level + 1,
@@ -68,6 +73,32 @@ export default (state = statisticsReducerDefaultState, action) => {
           civTotal: state.civTotal + 1,
           comLeft: state.comLeft + 1,
           comTotal: state.comTotal + 1
+        } 
+      }
+      else if (state.level === 9 || state.level === 21) {
+        return {
+          ...state,
+          level: state.level + 1,
+          attrLeft: state.attrLeft + 2,
+          attrTotal: state.attrTotal + 2,
+          civLeft: state.civLeft + 1,
+          civTotal: state.civTotal + 1,
+          comLeft: state.comLeft + 1,
+          comTotal: state.comTotal + 1,
+          talentsLeft: state.talentsLeft + 1,
+          talentsTotal: state.talentsTotal + 1
+        } 
+      }
+      else if (state.level === 3 || state.level === 15) {
+        return {
+          ...state,
+          level: state.level + 1,
+          attrLeft: state.attrLeft + 2,
+          attrTotal: state.attrTotal + 2,
+          comLeft: state.comLeft + 1,
+          comTotal: state.comTotal + 1,
+          talentsLeft: state.talentsLeft + 1,
+          talentsTotal: state.talentsTotal + 1
         } 
       }
       else {
