@@ -35,6 +35,9 @@ export default (state = basicsReducerDefaultState, action) => {
           origin: action.origin
         };
       }
+      
+    case 'RESET_BUILD':
+      return basicsReducerDefaultState;
 
     default:
       return state;

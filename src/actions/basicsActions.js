@@ -68,5 +68,13 @@ export const changeOrigin = (origin) => {
         gender: 'male',
         origin
       };    
+
+    case "beast":
+      return {
+        type: 'CHANGE_ORIGIN',
+        race: 'dwarf',
+        gender: 'male',
+        origin
+      };    
   }
 };

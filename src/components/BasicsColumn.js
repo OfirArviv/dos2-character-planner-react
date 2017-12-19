@@ -75,6 +75,7 @@ class BasicsColumn extends React.Component {
                   <option value="ifan">Ifan Ben-Mezd</option>
                   <option value="lohse">Lohse</option>
                   <option value="sebille">Sebille</option>
+                  <option value="beast">Beast</option>
                 </select>
               </div>
             </div>

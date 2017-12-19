@@ -25,11 +25,11 @@ class TalentForms extends React.Component {
 
   render () {
 
-    const talentOptions = ["(Select Talent)", "All Skilled Up", "Ambidextrous", "Arrow Recovery", "Bigger and Better", "Comeback Kid",
-    "Demon", "Duck Duck Goose", "Elemental Affinity", "Elemental Ranger", "Escapist", "Executioner", "Far Out Man",
-    "Five-Star Diner", "Glass Cannon", "Guerilla", "Hothead", "Ice King", "Leech", "Living Armour", "Lone Wolf",
-    "Mnemonic", "Morning Person", "Opportunist", "Parry Master", "Pet Pal", "Picture of Health", "Savage Sortilege",
-    "Slingshot", "Stench", "The Pawn", "Torturer", "Unstable", "Walk It Off", "What A Rush", "Spider's Kiss", "Trader's Secrets"];
+    const talentOptions = ["(Select Talent)", "All Skilled Up", "Ambidextrous", "Arrow Recovery", "Bigger and Better",
+    "Comeback Kid", "Demon", "Duck Duck Goose", "Elemental Affinity", "Elemental Ranger", "Escapist", "Executioner",
+    "Far Out Man", "Five-Star Diner", "Glass Cannon", "Guerilla", "Hothead", "Ice King", "Leech", "Living Armour",
+    "Lone Wolf", "Mnemonic", "Morning Person", "Opportunist", "Parry Master", "Pet Pal", "Picture of Health",
+    "Savage Sortilege", "Slingshot", "Stench", "The Pawn", "Torturer", "Unstable", "Walk It Off", "What A Rush"];
 
     return (
       <div>

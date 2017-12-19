@@ -567,6 +567,11 @@ export default (state = statisticsReducerDefaultState, action) => {
         talent6: action.talent
       } 
 
+    // Reset Build
+
+    case 'RESET_BUILD':
+      return statisticsReducerDefaultState;
+
     default:
       return state;
   }

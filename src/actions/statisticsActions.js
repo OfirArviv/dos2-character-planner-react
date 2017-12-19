@@ -343,3 +343,8 @@ export const changeTalent6 = (talent) => ({
   type: "CHANGE_TALENT_6",
   talent
 });
+
+// RESET_BUILD
+export const resetBuild = () => ({
+  type: "RESET_BUILD"
+});

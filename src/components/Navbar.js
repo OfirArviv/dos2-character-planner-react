@@ -1,40 +1,56 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { resetBuild } from '../actions/statisticsActions';
 
-const Navbar = () => (
-  <nav className="navbar is-dark">
-    <div className="container">
+class Navbar extends React.Component {
 
-      <div className="navbar-brand">
-        <NavbarBurger />
-      </div>
+  resetBuild = () => {
+    this.props.resetBuild();
+  };
 
-      <div className="navbar-menu" id="navMenuPlanner">
-        <div className="navbar-start">
-          <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Divinity+Original+Sin+2+Wiki">Wiki</a>
-            <div className="navbar-dropdown">
-              <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Attributes">Attributes</a>
-              <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Abilities">Abilities</a>
-              <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Talents">Talents</a>
-              <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Skills">Skills</a>
+  render () {
+    return (
+      <nav className="navbar is-dark">
+        <div className="container">
+
+          <div className="navbar-brand">
+            <NavbarBurger />
+          </div>
+
+          <div className="navbar-menu" id="navMenuPlanner">
+            <div className="navbar-start">
+              <div className="navbar-item has-dropdown is-hoverable">
+                <a className="navbar-link" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Divinity+Original+Sin+2+Wiki">Wiki</a>
+                <div className="navbar-dropdown">
+                  <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Attributes">Attributes</a>
+                  <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Abilities">Abilities</a>
+                  <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Talents">Talents</a>
+                  <a className="navbar-item" target="_blank" href="http://divinityoriginalsin2.wiki.fextralife.com/Skills">Skills</a>
+                </div>
+              </div>
+              <a className="navbar-item" target="_blank" href="http://larian.com/forums/ubbthreads.php?ubb=cfrm&c=18">Official Forums</a>
+              <a className="navbar-item" target="_blank" href="https://github.com/ek1506/dos2-character-planner">Github</a>
+            </div>
+
+            <div className="navbar-end">
+              <div className="navbar-item">
+                <p className="control">
+                  <button className="button is-danger has-text-weight-semibold" id="resetButton" onClick={ this.resetBuild }>Reset Build</button>
+                </p>
+              </div>
+              <div className="navbar-item">
+                <p className="control">
+                  <button className="button is-primary has-text-weight-semibold" id="saveButton">Save Build</button>
+                </p>
+              </div>
             </div>
           </div>
-          <a className="navbar-item" target="_blank" href="http://larian.com/forums/ubbthreads.php?ubb=cfrm&c=18">Official Forums</a>
-          <a className="navbar-item" target="_blank" href="https://github.com/ek1506/dos2-character-planner">Github</a>
-        </div>
 
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <p className="control">
-              <button className="button is-primary has-text-weight-semibold" id="saveButton">Save Build</button>
-            </p>
-          </div>
         </div>
-      </div>
-
-    </div>
-  </nav>
-);
+      </nav>
+    );
+  };
+};
 
 class NavbarBurger extends React.Component {
 
@@ -70,4 +86,13 @@ class NavbarBurger extends React.Component {
   };
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  resetBuild: () => dispatch(resetBuild())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
