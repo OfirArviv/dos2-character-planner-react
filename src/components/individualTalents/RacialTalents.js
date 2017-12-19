@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class DefaultTalents extends React.Component {
+class RacialTalents extends React.Component {
 
   render () {
     return (
@@ -12,15 +12,15 @@ class DefaultTalents extends React.Component {
             <div className="field">
               <div className="control">
                 <div className="select">
-                  <select id="racialTalent1" disabled>
+                  <select id="racialTalent1" value={ this.props.race } disabled>
                     <option value="human">Ingenious</option>
-                    <option value="human2">Thrifty</option>
                     <option value="elf">Ancestral Knowledge</option>
-                    <option value="elf2">Corpse Eater</option>
                     <option value="dwarf">Dwarven Guile</option>
-                    <option value="dwarf2">Sturdy</option>
                     <option value="lizard">Sophisticated</option>
-                    <option value="lizard2">Spellsong</option>
+                    <option value="undeadhuman">Ingenious</option>
+                    <option value="undeadelf">Ancestral Knowledge</option>
+                    <option value="undeaddwarf">Dwarven Guile</option>
+                    <option value="undeadlizard">Sophisticated</option>
                   </select>
                 </div>
               </div>
@@ -31,15 +31,15 @@ class DefaultTalents extends React.Component {
             <div className="field">
               <div className="control">
                 <div className="select">
-                  <select id="racialTalent2" disabled>
-                    <option value="human2">Thrifty</option>
-                    <option value="human">Ingenious</option>
-                    <option value="elf">Ancestral Knowledge</option>
-                    <option value="elf2">Corpse Eater</option>
-                    <option value="dwarf">Dwarven Guile</option>
-                    <option value="dwarf2">Sturdy</option>
-                    <option value="lizard">Sophisticated</option>
-                    <option value="lizard2">Spellsong</option>
+                  <select id="racialTalent2" value={ this.props.race } disabled>
+                    <option value="human">Thrifty</option>
+                    <option value="elf">Corpse Eater</option>
+                    <option value="dwarf">Sturdy</option>
+                    <option value="lizard">Spellsong</option>
+                    <option value="undeadhuman">Thrifty</option>
+                    <option value="undeadelf">Corpse Eater</option>
+                    <option value="undeaddwarf">Sturdy</option>
+                    <option value="undeadlizard">Spellsong</option>
                   </select>
                 </div>
               </div>
@@ -58,4 +58,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(DefaultTalents);
+export default connect(mapStateToProps)(RacialTalents);

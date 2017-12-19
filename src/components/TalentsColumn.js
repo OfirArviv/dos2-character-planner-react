@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DefaultTalents from './individualTalents/DefaultTalents';
+import RacialTalents from './individualTalents/RacialTalents';
 import TalentForms from './individualTalents/TalentForms';
 
 class TalentsColumn extends React.Component {
@@ -15,7 +15,7 @@ class TalentsColumn extends React.Component {
           <div className="level is-mobile" id="talentSlotCount">
             <div className="level-left">
               <div className="level-item">
-                <p className="subtitle is-5">Talents Left: </p>
+                <p className="subtitle is-5">Free Talents: </p>
               </div>
             </div>
             <div className="level-right">
@@ -27,7 +27,7 @@ class TalentsColumn extends React.Component {
             </div>
           </div>
 
-          <DefaultTalents />
+          <RacialTalents />
           <TalentForms />
 
           <div className="level is-mobile" id="talent-tooltips-level">
@@ -51,8 +51,7 @@ class TalentsColumn extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    talentsLeft: state.statistics.talentsLeft,
-    talentsTotal: state.statistics.talentsTotal,
+    talentsLeft: state.statistics.talentsLeft
   };
 };
 

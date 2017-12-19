@@ -50,20 +50,22 @@ const statisticsReducerDefaultState = {
 
   /* Talents */
   talentsLeft: 1,
-  talentSlots: 1,
-  talent1: "",
-  talent2: "",
-  talent3: "",
-  talent4: "",
-  talent5: ""
+  talent1: "(Select Talent)",
+  talent2: "(Select Talent)",
+  talent3: "(Select Talent)",
+  talent4: "(Select Talent)",
+  talent5: "(Select Talent)",
+  talent6: "(Select Talent)"
 };
 
 export default (state = statisticsReducerDefaultState, action) => {
   switch (action.type) {
 
-    /* Attributes Column */
+    // Attributes Column
+
     case 'LEVEL_UP':
-      if (state.level === 1 || state.level === 5 || state.level === 13 || state.level === 17 || state.level === 25) {
+      /* Add Attribute, Civil, and Combat points */
+      if (state.level === 1 || state.level === 5 || state.level === 9 || state.level === 13 || state.level === 21) {
         return {
           ...state,
           level: state.level + 1,
@@ -75,7 +77,8 @@ export default (state = statisticsReducerDefaultState, action) => {
           comTotal: state.comTotal + 1
         } 
       }
-      else if (state.level === 9 || state.level === 21) {
+      /* Add Attribute, Civil, Combat, and Talent points */
+      else if (state.level === 17) {
         return {
           ...state,
           level: state.level + 1,
@@ -86,10 +89,10 @@ export default (state = statisticsReducerDefaultState, action) => {
           comLeft: state.comLeft + 1,
           comTotal: state.comTotal + 1,
           talentsLeft: state.talentsLeft + 1,
-          talentsTotal: state.talentsTotal + 1
         } 
       }
-      else if (state.level === 3 || state.level === 15) {
+      /* Add Attribute, Combat, and Talent points */
+      else if (state.level === 2 || state.level === 7 || state.level === 12 || state.level === 22) {
         return {
           ...state,
           level: state.level + 1,
@@ -98,9 +101,9 @@ export default (state = statisticsReducerDefaultState, action) => {
           comLeft: state.comLeft + 1,
           comTotal: state.comTotal + 1,
           talentsLeft: state.talentsLeft + 1,
-          talentsTotal: state.talentsTotal + 1
         } 
       }
+      /* Add Attribute and Combat points */
       else {
         return {
           ...state,
@@ -112,7 +115,8 @@ export default (state = statisticsReducerDefaultState, action) => {
         } 
       }
     case 'LEVEL_DOWN':
-      if (state.level === 2 || state.level === 6 || state.level === 10 || state.level === 14 || state.level === 18 || state.level === 22 || state.level === 26) {
+      /* Remove Attribute, Civil, and Combat points */
+      if (state.level === 2 || state.level === 6 || state.level === 10 || state.level === 14 || state.level === 22) {
         return {
           ...state,
           level: state.level - 1,
@@ -124,6 +128,33 @@ export default (state = statisticsReducerDefaultState, action) => {
           comTotal: state.comTotal - 1
         } 
       }
+      /* Remove Attribute, Civil, Combat, and Talent points */
+      else if (state.level === 18) {
+        return {
+          ...state,
+          level: state.level - 1,
+          attrLeft: state.attrLeft - 2,
+          attrTotal: state.attrTotal - 2,
+          civLeft: state.civLeft - 1,
+          civTotal: state.civTotal - 1,
+          comLeft: state.comLeft - 1,
+          comTotal: state.comTotal - 1,
+          talentsLeft: state.talentsLeft - 1
+        } 
+      }
+      /* Remove Attribute, Combat, and Talent points */
+      else if (state.level === 3 || state.level === 8 || state.level === 13 || state.level === 23) {
+        return {
+          ...state,
+          level: state.level - 1,
+          attrLeft: state.attrLeft - 2,
+          attrTotal: state.attrTotal - 2,
+          comLeft: state.comLeft - 1,
+          comTotal: state.comTotal - 1,
+          talentsLeft: state.talentsLeft - 1
+        } 
+      }
+      /* Remove Attribute and Combat points */
       else {
         return {
           ...state,
@@ -209,7 +240,8 @@ export default (state = statisticsReducerDefaultState, action) => {
         attrLeft: state.attrLeft + 1
       }
 
-    /* Civil Abilities Column */
+    // Civil Abilities Column
+
     case 'BARTERING_UP':
       return {
         ...state,
@@ -295,7 +327,8 @@ export default (state = statisticsReducerDefaultState, action) => {
         civLeft: state.civLeft + 1
       }
 
-    /* Combat Abilities Column */
+    // Combat Abilities Column
+
     case 'DUALWIELDING_UP':
       return {
         ...state,
@@ -499,7 +532,40 @@ export default (state = statisticsReducerDefaultState, action) => {
         ...state,
         warfare: state.warfare - 1,
         comLeft: state.comLeft + 1
-      }  
+      } 
+
+    // Talents Column
+
+    case 'CHANGE_TALENT_1':
+      return {
+        ...state,
+        talent1: action.talent
+      }    
+    case 'CHANGE_TALENT_2':
+      return {
+        ...state,
+        talent2: action.talent
+      } 
+    case 'CHANGE_TALENT_3':
+      return {
+        ...state,
+        talent3: action.talent
+      } 
+    case 'CHANGE_TALENT_4':
+      return {
+        ...state,
+        talent4: action.talent
+      } 
+    case 'CHANGE_TALENT_5':
+      return {
+        ...state,
+        talent5: action.talent
+      } 
+    case 'CHANGE_TALENT_6':
+      return {
+        ...state,
+        talent6: action.talent
+      } 
 
     default:
       return state;

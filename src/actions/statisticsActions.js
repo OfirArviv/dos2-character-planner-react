@@ -307,3 +307,39 @@ export const warfareUp = () => ({
 export const warfareDown = () => ({
   type: "WARFARE_DOWN"
 });
+
+// CHANGE_TALENT_1
+export const changeTalent1 = (talent) => ({
+  type: "CHANGE_TALENT_1",
+  talent
+});
+
+// CHANGE_TALENT_2
+export const changeTalent2 = (talent) => ({
+  type: "CHANGE_TALENT_2",
+  talent
+});
+
+// CHANGE_TALENT_3
+export const changeTalent3 = (talent) => ({
+  type: "CHANGE_TALENT_3",
+  talent
+});
+
+// CHANGE_TALENT_4
+export const changeTalent4 = (talent) => ({
+  type: "CHANGE_TALENT_4",
+  talent
+});
+
+// CHANGE_TALENT_5
+export const changeTalent5 = (talent) => ({
+  type: "CHANGE_TALENT_5",
+  talent
+});
+
+// CHANGE_TALENT_6
+export const changeTalent6 = (talent) => ({
+  type: "CHANGE_TALENT_6",
+  talent
+});
