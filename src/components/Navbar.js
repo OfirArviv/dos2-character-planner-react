@@ -38,11 +38,6 @@ class Navbar extends React.Component {
                   <button className="button is-danger has-text-weight-semibold" id="resetButton" onClick={ this.resetBuild }>Reset Build</button>
                 </p>
               </div>
-              <div className="navbar-item">
-                <p className="control">
-                  <button className="button is-primary has-text-weight-semibold" id="saveButton">Save Build</button>
-                </p>
-              </div>
             </div>
           </div>
 
