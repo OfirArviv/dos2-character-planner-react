@@ -29,7 +29,7 @@ class Navbar extends React.Component {
                 </div>
               </div>
               <a className="navbar-item" target="_blank" href="http://larian.com/forums/ubbthreads.php?ubb=cfrm&c=18">Official Forums</a>
-              <a className="navbar-item" target="_blank" href="https://github.com/ek1506/dos2-character-planner">Github</a>
+              <a className="navbar-item" target="_blank" href="https://github.com/ek1506/dos2-character-planner-react">Github</a>
             </div>
 
             <div className="navbar-end">
