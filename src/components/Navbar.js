@@ -31,7 +31,6 @@ class Navbar extends React.Component {
               <a className="navbar-item" target="_blank" href="http://larian.com/forums/ubbthreads.php?ubb=cfrm&c=18">Official Forums</a>
               <a className="navbar-item" target="_blank" href="https://github.com/ek1506/dos2-character-planner-react">Github</a>
             </div>
-
             <div className="navbar-end">
               <div className="navbar-item">
                 <p className="control">
@@ -51,7 +50,7 @@ class NavbarBurger extends React.Component {
 
   // NAVBAR BURGER MENU SCRIPT
   componentDidMount() {
-    var navbarBurgersArray = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
+    let navbarBurgersArray = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
 
     if (navbarBurgersArray.length > 0) {
 
@@ -59,8 +58,8 @@ class NavbarBurger extends React.Component {
         e.addEventListener("click", function() {
           
           // Get the target from the "data-target" attribute
-          var target = e.dataset.target;
-          var domTarget = document.getElementById(target);
+          let target = e.dataset.target;
+          let domTarget = document.getElementById(target);
 
           // Toggle the class on both the ".navbar-burger" and the ".navbar-menu"
           e.classList.toggle("is-active");
@@ -72,7 +71,7 @@ class NavbarBurger extends React.Component {
 
   render() {
     return (
-      <button className="button navbar-burger is-primary" data-target="navMenuPlanner">
+      <button className="button navbar-burger is-primary is-radiusless" data-target="navMenuPlanner">
         <span></span>
         <span></span>
         <span></span>
